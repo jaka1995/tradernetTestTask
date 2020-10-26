@@ -1,7 +1,9 @@
 package com.example.data_impl
 
 import com.example.data_api.StockRepository
+import com.example.data_impl.local.DaoProvider
 import com.example.data_impl.remote.ApiProvider
+import com.example.data_impl.remote.strockPrice.dto.StockPriceDto
 import com.example.domain_api.model.RowStockPriceModel
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
@@ -9,6 +11,7 @@ import javax.inject.Inject
 
 class StockRepositoryImpl @Inject constructor(
     private val apiProvider: ApiProvider,
+    private val daoProvider: DaoProvider,
     private val mapper: StockPriceMapper
 ) : StockRepository {
     override fun observeStockPrice(): Flowable<List<RowStockPriceModel>> {
@@ -16,7 +19,17 @@ class StockRepositoryImpl @Inject constructor(
             .provideStockRateApi()
             .observeStockPrice()
             .map {
-                mapper.map(it)
+                val local = daoProvider.provideStockDao().provideLocalStockPrice()
+                val finalList = syncDate(local, it.stockPrices)
+                return@map finalList
+            }
+            .doOnNext {
+                daoProvider
+                    .provideStockDao()
+                    .saveStockPrice(it)
+            }
+            .map {
+                it.map { mapper.map(it) }
             }
     }
 
@@ -30,6 +43,23 @@ class StockRepositoryImpl @Inject constructor(
         return apiProvider
             .provideStockRateApi()
             .disconnect()
+    }
+
+    private fun syncDate(
+        local: List<StockPriceDto>,
+        remote: List<StockPriceDto>
+    ): List<StockPriceDto> {
+        val finalList: MutableMap<String, StockPriceDto> = mutableMapOf()
+
+        remote.forEach {
+            finalList.put(it.tikcer ?: "", it)
+        }
+
+        local.forEach {
+            finalList.get(it.tikcer ?: "") ?: finalList.put(it.tikcer ?: "", it)
+        }
+
+        return finalList.map { it.value }
     }
 
 }

@@ -1,23 +1,22 @@
 package com.example.data_impl.di
 
-import com.example.data_impl.StockPriceMapper
-import com.google.gson.Gson
+import com.example.data_api.StockRepository
+import com.example.data_impl.StockRepositoryImpl
+import com.example.data_impl.local.DaoProvider
+import com.example.data_impl.local.DaoProviderImpl
+import com.example.data_impl.remote.ApiProvider
+import com.example.data_impl.remote.ApiProviderImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 @Module
-class DataModule {
+interface DataModule {
+    @Binds
+    fun provideStockRepository(repo: StockRepositoryImpl): StockRepository
 
-    @Singleton
-    @Provides
-    fun provideGson(): Gson {
-        return Gson()
-    }
+    @Binds
+    fun provideApiProvider(apiProvider: ApiProviderImpl): ApiProvider
 
-    @Singleton
-    @Provides
-    fun provideMapper(): StockPriceMapper {
-        return StockPriceMapper()
-    }
+    @Binds
+    fun provideDaoProvider(daoProviderImpl: DaoProviderImpl): DaoProvider
 }

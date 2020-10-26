@@ -4,7 +4,7 @@ import com.example.data_api.StockRepository
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = [ApiModule::class, DataModule::class])
+@Component(modules = [DataModule::class, DataDepsModule::class])
 @Singleton
 interface DataComponent {
 
