@@ -1,0 +1,16 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Main libs
+    implementation libraries.kotlin
+    implementation libraries.rxJava
+
+    // Core features
+    implementation feature.domain_api
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

@@ -1,0 +1,5 @@
+include ':feature_stock_price'
+include ':domain_api'
+include ':data_api'
+include ':app'
+rootProject.name = "TradernetTestTask"

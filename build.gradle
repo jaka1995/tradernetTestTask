@@ -1,0 +1,55 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        minSdk = 19
+        targetSdk = 30
+        compileSdk = 30
+        kotlin = "1.3.72"
+        buildTools = "30.0.2"
+
+
+        libraries = [
+                rxAndroid   : 'io.reactivex.rxjava3:rxandroid:3.0.0',
+                rxJava      : 'io.reactivex.rxjava3:rxjava:3.0.0',
+                dagger      : 'com.google.dagger:dagger:2.29.1',
+                daggerKapt  : 'com.google.dagger:dagger-compiler:2.29.1',
+                okhttp      : 'com.squareup.okhttp3:okhttp:4.9.0',
+                gson        : 'com.google.code.gson:gson:2.8.6',
+                kotlin      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:" + kotlin,
+
+        ]
+
+        mainLibs = [
+                appCompat   : 'androidx.appcompat:appcompat:1.2.0',
+                kotlin      : "org.jetbrains.kotlin:kotlin-stdlib:" + kotlin
+        ]
+
+        feature = [
+                data_api    : project(':data_api'),
+                domain_api  : project(':domain_api')
+        ]
+        kotlin_version = '1.3.72'
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin}"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

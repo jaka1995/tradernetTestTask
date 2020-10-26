@@ -1,0 +1,8 @@
+apply from: "$project.rootDir/general.gradle"
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation mainLibs.appCompat
+    implementation mainLibs.kotlin
+}
