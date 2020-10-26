@@ -1,10 +1,21 @@
+apply plugin: 'com.android.library'
 apply from: "$project.rootDir/general.gradle"
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation feature.domain_api
-    implementation libraries.recyclerView
+
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    
+    implementation libraries.dagger
+    kapt libraries.daggerKapt
+
+    // Image loading
     implementation libraries.glide
-    implementation libraries.glideProc
+    annotationProcessor libraries.glideProc
+
+    // UI
+    implementation libraries.recyclerView
 }

@@ -3,6 +3,7 @@ package com.example.tradernettesttask
 import android.app.Application
 import com.example.data_impl.di.DaggerDataComponent
 import com.example.domain_impl.di.DaggerDomainComponent
+import com.example.feature_stock_price.di.StockComponentImpl
 
 class App : Application() {
 
@@ -15,6 +16,8 @@ class App : Application() {
             .repo(dataComponent.provideStockRepository())
             .build()
 
+        val stockComponent = StockComponentImpl
+            .inject(domainComponent.stockInteractor)
 
     }
 }

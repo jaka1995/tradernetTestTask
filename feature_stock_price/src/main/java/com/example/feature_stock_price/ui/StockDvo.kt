@@ -1,4 +1,4 @@
-package com.example.feature_stock_price
+package com.example.feature_stock_price.ui
 
 class StockDvo(
     val title: String,

@@ -1,4 +1,4 @@
-package com.example.feature_stock_price
+package com.example.feature_stock_price.rcv
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,20 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.feature_stock_price.R
+import com.example.feature_stock_price.ui.StockDvo
 
 class StockAdapter : RecyclerView.Adapter<StockAdapter.StockAdapterViewHolder>() {
 
     private val items: MutableList<StockDvo> = mutableListOf()
 
     fun setNewItems(newList: List<StockDvo>) {
-        val diffUtilsResult = DiffUtil.calculateDiff(StockDiffUtils(items, newList))
+        val diffUtilsResult = DiffUtil.calculateDiff(
+            StockDiffUtils(
+                items,
+                newList
+            )
+        )
         diffUtilsResult.dispatchUpdatesTo(this)
         items.clear()
         items.addAll(newList)

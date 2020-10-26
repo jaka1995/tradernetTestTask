@@ -1,6 +1,7 @@
-package com.example.feature_stock_price
+package com.example.feature_stock_price.rcv
 
 import androidx.recyclerview.widget.DiffUtil
+import com.example.feature_stock_price.ui.StockDvo
 
 class StockDiffUtils(
     private val old: List<StockDvo>,

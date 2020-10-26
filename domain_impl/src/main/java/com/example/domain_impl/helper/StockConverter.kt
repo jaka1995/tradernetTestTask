@@ -45,6 +45,9 @@ class StockConverter {
     }
 
     private fun roundByMinStep(value: Double, step: Double): Double {
-        return (value / step).roundToInt() * step
+        if (step != 0.0)
+            return (value / step).roundToInt() * step
+
+        return value
     }
 }

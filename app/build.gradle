@@ -1,4 +1,26 @@
+apply plugin: 'com.android.application'
 apply from: "$project.rootDir/general.gradle"
+
+android {
+
+    defaultConfig {
+        applicationId "com.example.tradernettesttask"
+        minSdkVersion minSdk
+        targetSdkVersion targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -11,5 +33,6 @@ dependencies {
     implementation feature.data_impl
     implementation feature.domain_api
     implementation feature.domain_impl
+    implementation feature.feature_stock_price
 
 }
