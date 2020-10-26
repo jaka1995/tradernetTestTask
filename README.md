@@ -19,9 +19,9 @@ To build project run following:
 $ ./gradlew assemblePlayDebug
 ```
 
-[rxJava] : https://github.com/ReactiveX/RxJava
-[dagger] : https://github.com/google/dagger
-[okhttp] : https://square.github.io/okhttp/
-[gson]   : https://github.com/google/gson
-[jetpack]: https://developer.android.com/jetpack
-[tradernet] : https://tradernet.ru/tradernet-api/
+ [rxJava]: https://github.com/ReactiveX/RxJava
+ [dagger]: https://github.com/google/dagger
+ [okhttp]: https://square.github.io/okhttp/
+ [gson]: https://github.com/google/gson
+ [jetpack]: https://developer.android.com/jetpack
+ [tradernet]: https://tradernet.ru/tradernet-api/
