@@ -20,8 +20,7 @@ class StockRepositoryImpl @Inject constructor(
             .observeStockPrice()
             .map {
                 val local = daoProvider.provideStockDao().provideLocalStockPrice()
-                val finalList = syncDate(local, it.stockPrices)
-                return@map finalList
+                return@map syncDate(local, it.stockPrices)
             }
             .doOnNext {
                 daoProvider
