@@ -11,6 +11,7 @@ class StockPriceMapper {
         private const val IMAGE_URL = "https://tradernet.ru/logos/get-logo-by-ticker?ticker="
     }
 
+    // TODO introduce helper class for handling calculation
     fun map(dto: StocksPriceDto): List<StockPriceModel> {
         val tempList = mutableListOf<StockPriceModel>()
 
