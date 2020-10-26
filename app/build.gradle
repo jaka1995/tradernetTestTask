@@ -5,4 +5,10 @@ dependencies {
 
     implementation mainLibs.appCompat
     implementation mainLibs.kotlin
+
+
+    implementation feature.data_api
+    implementation feature.data_impl
+    implementation feature.domain_api
+
 }
