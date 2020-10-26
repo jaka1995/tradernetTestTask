@@ -10,5 +10,6 @@ dependencies {
     implementation feature.data_api
     implementation feature.data_impl
     implementation feature.domain_api
+    implementation feature.domain_impl
 
 }

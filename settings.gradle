@@ -1,3 +1,4 @@
+include ':domain_impl'
 include ':data_impl'
 include ':feature_stock_price'
 include ':domain_api'

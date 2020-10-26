@@ -26,8 +26,9 @@ buildscript {
 
         feature = [
                 data_api    : project(':data_api'),
-                data_impl  : project(':data_impl'),
-                domain_api  : project(':domain_api')
+                data_impl   : project(':data_impl'),
+                domain_api  : project(':domain_api'),
+                domain_impl : project(':domain_impl')
         ]
         kotlin_version = '1.3.72'
     }
