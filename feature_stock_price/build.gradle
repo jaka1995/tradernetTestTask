@@ -5,4 +5,6 @@ dependencies {
 
     implementation feature.domain_api
     implementation libraries.recyclerView
+    implementation libraries.glide
+    implementation libraries.glideProc
 }
