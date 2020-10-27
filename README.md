@@ -8,7 +8,7 @@ for presentation layer used MVVMI pattern.
 Application include such libraries as:
  * RxJava [rxJava]
  * Dagger for DI [dagger]
- * Okhttp for networking [okhttp]
+ * Socket IO for networking [socketIO]
  * Gson for parsing [gson]
  * Jetpack for presentation [jetpack]
 
@@ -21,7 +21,7 @@ $ ./gradlew assemblePlayDebug
 
  [rxJava]: https://github.com/ReactiveX/RxJava
  [dagger]: https://github.com/google/dagger
- [okhttp]: https://square.github.io/okhttp/
+ [socketIO]: https://github.com/socketio/socket.io-client-java
  [gson]: https://github.com/google/gson
  [jetpack]: https://developer.android.com/jetpack
  [tradernet]: https://tradernet.ru/tradernet-api/
