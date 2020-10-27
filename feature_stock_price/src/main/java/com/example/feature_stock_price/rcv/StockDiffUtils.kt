@@ -9,7 +9,9 @@ class StockDiffUtils(
 ) : DiffUtil.Callback() {
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return old[oldItemPosition].title == new[newItemPosition].title
+        val oldTitle = old[oldItemPosition].title
+        val newTitle = new[newItemPosition].title
+        return oldTitle == newTitle
     }
 
     override fun getOldListSize(): Int {
@@ -21,10 +23,12 @@ class StockDiffUtils(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return old[oldItemPosition].percent == new[newItemPosition].percent &&
-                old[oldItemPosition].color == new[newItemPosition].color &&
-                old[oldItemPosition].imageUrl == new[newItemPosition].title &&
-                old[oldItemPosition].difference == new[newItemPosition].difference
+        val oldPercent = old[oldItemPosition].percent
+        val newPercent = new[newItemPosition].percent
+        val oldDiffer =  old[oldItemPosition].difference
+        val newDiffer = new[newItemPosition].difference
+        return oldPercent == newPercent &&
+                oldDiffer == newDiffer
 
     }
 }

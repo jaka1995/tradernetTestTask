@@ -72,7 +72,7 @@ class StockRateApiImpl(
         PublishProcessor.create()
 
     private val socketConnectionListener = Emitter.Listener { any ->
-        val temp =  JSONArray()
+        val temp = JSONArray()
         STOCK_LIST.forEach {
             temp.put(it)
         }

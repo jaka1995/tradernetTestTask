@@ -1,12 +1,13 @@
 package com.example.data_impl.local
 
 import com.example.data_impl.local.stockPrice.StockDao
-import com.example.data_impl.local.stockPrice.StockDaoImpl
 import javax.inject.Inject
 
-class DaoProviderImpl @Inject constructor() : DaoProvider {
+class DaoProviderImpl @Inject constructor(
+    private val stockDao: StockDao
+) : DaoProvider {
     override fun provideStockDao(): StockDao {
-        return StockDaoImpl()
+        return stockDao
     }
 
 }

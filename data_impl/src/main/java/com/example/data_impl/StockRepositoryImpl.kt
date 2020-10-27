@@ -50,12 +50,12 @@ class StockRepositoryImpl @Inject constructor(
     ): List<StockPriceDto> {
         val finalList: MutableMap<String, StockPriceDto> = mutableMapOf()
 
-        remote.forEach {
-            finalList.put(it.tikcer ?: "", it)
-        }
-
         local.forEach {
             finalList.get(it.tikcer ?: "") ?: finalList.put(it.tikcer ?: "", it)
+        }
+
+        remote.forEach {
+            finalList.put(it.tikcer ?: "", it)
         }
 
         return finalList.map { it.value }
